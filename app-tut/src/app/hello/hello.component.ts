@@ -62,5 +62,6 @@ export class HelloComponent
   onButtonClicked() {
     this.text = 'Changed from Hello Component';
     this.buttonClicked.emit(this.text);
+    this._dataService.setTextFromHello(this.text);
   }
 }

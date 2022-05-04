@@ -31,25 +31,25 @@ export class AppComponent
   withBorder = true;
 
   ngOnInit(): void {
-    console.log('OnInit ran');
+    // console.log('OnInit ran');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('OnChanges ran', { changes });
+    // console.log('OnChanges ran', { changes });
   }
   ngOnDestroy(): void {
-    console.log('OnDestroy ran');
+    // console.log('OnDestroy ran');
   }
   ngAfterViewInit(): void {
-    console.log('AfterViewInit ran');
+    // console.log('AfterViewInit ran');
   }
   ngAfterContentInit(): void {
-    console.log('AfterContentInit ran');
+    // console.log('AfterContentInit ran');
   }
   ngAfterViewChecked(): void {
-    console.log('AfterViewChecked ran');
+    // console.log('AfterViewChecked ran');
   }
   ngAfterContentChecked(): void {
-    console.log('AfterContentChecked ran');
+    // console.log('AfterContentChecked ran');
   }
 
   onButtonClick() {
