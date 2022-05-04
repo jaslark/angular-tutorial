@@ -4,6 +4,7 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  Input,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -11,11 +12,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-hello',
+  templateUrl: './hello.component.html',
+  styleUrls: ['./hello.component.scss'],
 })
-export class AppComponent
+export class HelloComponent
   implements
     OnInit,
     OnChanges,
@@ -25,35 +26,29 @@ export class AppComponent
     AfterViewChecked,
     AfterContentChecked
 {
-  title = 'app-tut';
+  @Input() text: string = '';
 
-  textColor = 'tomato';
-  withBorder = true;
+  constructor() {}
 
   ngOnInit(): void {
-    console.log('OnInit ran');
+    console.log('Child OnInit ran');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('OnChanges ran', { changes });
+    console.log('Child OnChanges ran', { changes });
   }
   ngOnDestroy(): void {
-    console.log('OnDestroy ran');
+    console.log('Child OnDestroy ran');
   }
   ngAfterViewInit(): void {
-    console.log('AfterViewInit ran');
+    console.log('Child AfterViewInit ran');
   }
   ngAfterContentInit(): void {
-    console.log('AfterContentInit ran');
+    console.log('Child AfterContentInit ran');
   }
   ngAfterViewChecked(): void {
-    console.log('AfterViewChecked ran');
+    console.log('Child AfterViewChecked ran');
   }
   ngAfterContentChecked(): void {
-    console.log('AfterContentChecked ran');
-  }
-
-  onButtonClick() {
-    this.withBorder = !this.withBorder;
-    this.title = 'Change title!';
+    console.log('Child AfterContentChecked ran');
   }
 }
