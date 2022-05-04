@@ -56,4 +56,8 @@ export class AppComponent
     this.withBorder = !this.withBorder;
     this.title = 'Change title!';
   }
+
+  onButtonClickedFromHello(event: string) {
+    this.title = event;
+  }
 }

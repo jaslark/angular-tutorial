@@ -4,10 +4,12 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 
@@ -27,6 +29,7 @@ export class HelloComponent
     AfterContentChecked
 {
   @Input() text: string = '';
+  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
 
@@ -50,5 +53,11 @@ export class HelloComponent
   }
   ngAfterContentChecked(): void {
     console.log('Child AfterContentChecked ran');
+  }
+
+
+  onButtonClicked() {
+    this.text = 'Changed from Hello Component';
+    this.buttonClicked.emit(this.text);
   }
 }
