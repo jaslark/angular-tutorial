@@ -29,6 +29,11 @@ export class AppComponent
 
   textColor = 'tomato';
   withBorder = true;
+  user = {
+    age: 14
+  }
+  isFlag = true;
+  counter = 5;
 
   ngOnInit(): void {
     // console.log('OnInit ran');
