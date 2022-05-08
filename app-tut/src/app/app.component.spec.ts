@@ -1,31 +1,37 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      schemas: [ NO_ERRORS_SCHEMA ],
+      providers: [
+
+      ]
     }).compileComponents();
-  });
+  }));
 
-  it('should create the app', () => {
+  it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
+  }));
 
-  it(`should have as title 'app-tut'`, () => {
+  xit(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('app-tut');
-  });
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('app');
+  }));
 
-  it('should render title', () => {
+  xit('should render title in a mat-toolbar', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('app-tut app is running!');
-  });
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-toolbar').textContent).toContain('Angular Sample');
+  }));
 });
