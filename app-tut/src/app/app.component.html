@@ -1,3 +1,7 @@
 <h1 [class.with-border]="withBorder" [style.color]="textColor">{{ title }}</h1>
 <button (click)="onButtonClick()">{{ withBorder ? 'Hide' : 'Show' }} Border</button>
 <app-hello [text]="title" (buttonClicked)="onButtonClickedFromHello($event)"></app-hello>
+<hr>
+<app-view-child></app-view-child>
+
+<button (click)="runChild()">Click Me</button>
