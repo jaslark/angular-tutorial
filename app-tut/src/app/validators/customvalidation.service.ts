@@ -3,10 +3,9 @@ import { ValidatorFn, AbstractControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomValidationService {
-
   patternValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
       if (!control.value) {
@@ -18,25 +17,21 @@ export class CustomValidationService {
     };
   }
 
-  matchPassword(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) : any => {
-      const passwordControl = formGroup.controls[password];
-      const confirmPasswordControl = formGroup.controls[confirmPassword];
-
-      if (!passwordControl || !confirmPasswordControl) {
-        return null;
+  confirmPasswordValidator(controlName: string, matchingControlName: string) {
+    return (controls: AbstractControl) => {
+      let control = controls.get(controlName);
+      let matchingControl = controls.get(matchingControlName);
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors.confirmPasswordValidator
+      ) {
+        return;
       }
-
-      if (confirmPasswordControl.errors && !confirmPasswordControl.errors['passwordMismatch']) {
-        return null;
-      }
-
-      if (passwordControl.value !== confirmPasswordControl.value) {
-        confirmPasswordControl.setErrors({ passwordMismatch: true });
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmPasswordValidator: true });
       } else {
-        confirmPasswordControl.setErrors(null);
+        matchingControl.setErrors(null);
       }
-    }
+    };
   }
-
 }

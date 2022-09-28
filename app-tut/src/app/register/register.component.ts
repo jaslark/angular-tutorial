@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormBuilder,
   AbstractControl,
+  AbstractControlOptions,
 } from '@angular/forms';
 import { CustomValidationService } from '../validators/customvalidation.service';
 
@@ -24,8 +25,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group(
       {
-        name: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
         password: [
           '',
           Validators.compose([
@@ -36,11 +35,11 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ['', [Validators.required]],
       },
       {
-        validator: this.customValidator.matchPassword(
+        validator: this.customValidator.confirmPasswordValidator(
           'password',
           'confirmPassword'
         ),
-      }
+      } as AbstractControlOptions
     );
   }
 

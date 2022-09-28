@@ -47,14 +47,9 @@ export class SignInComponent implements OnInit {
       ],
       rememberMe: false
     });
-
-    new FormControl("", Validators.required, this.isUserNameDuplicated);
   }
   onSubmit(): void {
     console.log(this.signInForm);
   }
 
-  isUserNameDuplicated(control: AbstractControl): Observable<ValidationErrors> {
-    return of(null);
-  }
 }
