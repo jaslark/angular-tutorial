@@ -12,9 +12,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormArrayComponent } from './form-array/form-array.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, SignInComponent, FormArrayComponent],
+  declarations: [AppComponent, SignInComponent, FormArrayComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
