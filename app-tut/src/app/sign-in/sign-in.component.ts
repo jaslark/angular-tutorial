@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
   //   rememberMe: new FormControl(false),
   // });
 
-  signInForm: FormGroup;
+  signInForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 

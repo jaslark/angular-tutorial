@@ -14,7 +14,7 @@ import { CustomValidationService } from '../validators/customvalidation.service'
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
+  registerForm!: FormGroup;
   submitted = false;
 
   constructor(
@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group(
       {
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
         password: [
           '',
           Validators.compose([
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ['', [Validators.required]],
       },
       {
-        validator: this.customValidator.confirmPasswordValidator(
+        validator: this.customValidator.matchPassword(
           'password',
           'confirmPassword'
         ),
